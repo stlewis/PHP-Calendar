@@ -1,0 +1,1 @@
+Really easy to use PHP calendar script. A basic usage example can be found in index.php.
