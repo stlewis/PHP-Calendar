@@ -21,16 +21,16 @@
       $month_name = $this->months[$this->month];
       $html = <<<CAL
       <div id='calendar_wrapper'>
-        <div id='calendar_header'>
+        <div id='calendar_header' style='clear: both;'>
           <div id='month_name'>$month_name $year</div>
-          <div id='day_runner'>
-            <div class='day_name'>Sunday</div>
-            <div class='day_name'>Monday</div>
-            <div class='day_name'>Tuesday</div>
-            <div class='day_name'>Wednesday</div>
-            <div class='day_name'>Thursday</div>
-            <div class='day_name'>Friday</div>
-            <div class='day_name'>Saturday</div>
+          <div id='day_runner' style='clear: both;'>
+            <div style='float: left;' class='day_name'>Sunday</div>
+            <div style='float: left;' class='day_name'>Monday</div>
+            <div style='float: left;' class='day_name'>Tuesday</div>
+            <div style='float: left;' class='day_name'>Wednesday</div>
+            <div style='float: left;' class='day_name'>Thursday</div>
+            <div style='float: left;' class='day_name'>Friday</div>
+            <div style='float: left;' class='day_name'>Saturday</div>
           </div>
         </div>
 CAL;
@@ -71,12 +71,12 @@ CAL;
       $now       = new DateTime(strftime("%Y-%m-%d"));
       $this_date = new DateTime("{$this->year}-{$month}-{$day_num}");
       if($this_date == $now) $class .= " current_day";
-      $html  = "<div class='$class'><div class='day_num_box'>$day_num</div></div>";
+      $html  = "<div class='$class' style='float: left;'><div class='day_num_box'>$day_num</div></div>";
       return $html;
     }
     
     private function empty_block(){
-      $html = "<div class='empty_date date_box'><div class='day_num_box'>&nbsp;</div></div>";
+      $html = "<div class='empty_date date_box' style='float: left;'><div class='day_num_box'>&nbsp;</div></div>";
       return $html;
     }
     

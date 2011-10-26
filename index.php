@@ -6,7 +6,6 @@
   }
   #calendar_header{
     font-weight: bold;
-    clear: both;
   }
   
   #days_box{
@@ -18,19 +17,13 @@
     font-size: 24px;
   }
   
-  #day_runner{
-    clear: both;
-  }
-  
   .day_name{
-    float: left;
     padding: 5px;
     margin: 2px;
     width: 80px;
   }
   
   .date_box{
-    float: left;
     width: 90px;
     height: 90px;
     border: 1px solid black;
