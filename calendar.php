@@ -1,5 +1,13 @@
 <?php
 
+  /*
+    TODO
+
+    Pass width in to the constructor and calculate appropriate dimensions
+    for each element from that value.
+
+  */
+
   class Calendar{
     
     public $months;

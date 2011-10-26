@@ -2,7 +2,6 @@
 
   #calendar_wrapper{
     width: 700px;
-    height: 500px;
   }
   #calendar_header{
     font-weight: bold;
