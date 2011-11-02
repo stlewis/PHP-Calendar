@@ -1,1 +1,77 @@
-Really easy to use PHP calendar script. A basic usage example can be found in index.php.
+=== Introduction ===
+
+There are probably as many PHP calendar scripts as there are people to write PHP code,
+but I thought I'd throw my really easy to use one in to the mix for anyone who's interested.
+When I was creating the script, I had the following goals in mind:
+
+* It needed to be really easy to use
+* It needed to be really easy to visually customize
+* It needed to be really easy to hook in to client-side scripting.
+
+==== Easy to Use ====
+
+Generating a calendar on a PHP page is as simple as adding the following PHP code:
+
+<code>
+  include "calendar.php";
+  $calendar = new Calendar(7, 2011);
+
+  $calendar->render();
+</code>
+
+
+=== Easy to Visually Customize ===
+
+That's really all there is to it.  If you should happen to try this example, you might notice that
+your calendar leaves quite a bit to be desired visually though.  In order to get it looking functional,
+we should style the 'day boxes' a little bit:
+
+<code>
+  .date_box{
+    height: 90px;
+    border: 1px solid black;
+  }
+</code>
+
+All this does is establish a height for the boxes and gives them a border.  Now at least, it _looks_ like
+a calendar.  There are a lot of other style options, each of which are explained in the included calendar.css
+file.  That file can also be dropped straight in to give you a reasonable default starting point for styling
+your calendar.
+
+
+=== Client-side Scripting ===
+
+99% of the time, if you've got a calendar on a page, you need it to be interactive.  That interactivity is usually
+accomplished using some combination of server-side and browser-side scripting.  This calendar script is written 
+entirely in PHP code, and it doesn't _require_ any Javascript, but it is "Javascript ready", in the sense that 
+all of the vital parts of it are properly id'd and labelled for easy identification in a client-side script.
+
+
+=== Slightly More Advanced Usage ===
+
+It's hard to call this 'Advanced' usage, since the whole thing is really super simple, but I thought I'd go 
+over a couple of alternative methods for creating your calendar.
+
+==== Passing Dates to render() ====
+
+Depending upon your application, it may not be practical to give a date to the calendar upon creation.  For 
+instance, if you're displaying more than one calendar on a page, you need not create a new calendar instance
+for each one.  You can simply pass your desired date to the render method of the calendar:
+
+<code>
+  $calender = new Calender();
+  $calender->render(7, 2011);
+  $calender->render(8, 2011);
+</code>
+
+==== Setting Calendar Width ====
+
+One thing that always gets on my nerves with calendar scripts is trying to determine the appropriate dimensions
+for each 'date box', depending upon the overall width of the calendar.  With my script, I try to take some of the
+pain out of that process.  Simply tell the script how wide, (in pixels), you want the calendar to be, and it will
+calculate all internal dimensions for you:
+
+<code>
+  $calender = new Calendar(null, null, 500);
+  $calendar->render(7, 2011);
+</code>

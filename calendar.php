@@ -1,20 +1,16 @@
 <?php
 
-  /*
-    TODO
-
-    Pass width in to the constructor and calculate appropriate dimensions
-    for each element from that value.
-
-  */
-
   class Calendar{
     
     public $months;
     public $month;
     public $year;
+    public $calendar_width;
     
-    public function __construct(){
+    public function __construct($month = null, $year = null, $calendar_width = null){
+      $this->month = $month;
+      $this->year  = $year;
+      $this->calendar_width = $calendar_width;
       $this->months = array('January'  , 'Feburary', 
                      'March'    , 'April', 
                      'May'      , 'June', 
@@ -23,26 +19,28 @@
                      'November' , 'December');
     }
     
-    public function render($month, $year){
-      $this->month = $month - 1;
-      $this->year  = $year;
-      $month_name = $this->months[$this->month];
+    public function render($month = null, $year = null){
+      $this->month = $this->month ? $this->month : $month;
+      $this->year  = $this->year ? $this->year : $year;
+      $month_name = $this->months[$this->month - 1];
+      $calendar_width_style = $this->calendar_width ? "width: {$this->calendar_width}px;" : "";
+      $box_width_style = $this->calendar_width ? "width: ".$this->calculate_box_width()."px;" : "";      
       $html = <<<CAL
-      <div id='calendar_wrapper'>
+      <div id='calendar_wrapper' style="$calendar_width_style">
         <div id='calendar_header' style='clear: both;'>
-          <div id='month_name'>$month_name $year</div>
+          <div id='month_name'>$month_name {$this->year}</div>
           <div id='day_runner' style='clear: both;'>
-            <div style='float: left;' class='day_name'>Sunday</div>
-            <div style='float: left;' class='day_name'>Monday</div>
-            <div style='float: left;' class='day_name'>Tuesday</div>
-            <div style='float: left;' class='day_name'>Wednesday</div>
-            <div style='float: left;' class='day_name'>Thursday</div>
-            <div style='float: left;' class='day_name'>Friday</div>
-            <div style='float: left;' class='day_name'>Saturday</div>
+            <div style='float: left; $box_width_style text-align: center;' class='day_name'>SUN</div>
+            <div style='float: left; $box_width_style text-align: center;' class='day_name'>MON</div>
+            <div style='float: left; $box_width_style text-align: center;' class='day_name'>TUE</div>
+            <div style='float: left; $box_width_style text-align: center;' class='day_name'>WED</div>
+            <div style='float: left; $box_width_style text-align: center;' class='day_name'>THU</div>
+            <div style='float: left; $box_width_style text-align: center;' class='day_name'>FRI</div>
+            <div style='float: left; $box_width_style text-align: center;' class='day_name'>SAT</div>
           </div>
         </div>
 CAL;
-      $html .= "<div id='days_box'>".$this->calendar_for($this->month, $this->year)."</div>";
+      $html .= "<div id='days_box' style='clear:both;'>".$this->calendar_for($this->month, $this->year)."</div>";
       $html .= "</div>";
       return $html;
     }
@@ -79,13 +77,19 @@ CAL;
       $now       = new DateTime(strftime("%Y-%m-%d"));
       $this_date = new DateTime("{$this->year}-{$month}-{$day_num}");
       if($this_date == $now) $class .= " current_day";
-      $html  = "<div class='$class' style='float: left;'><div class='day_num_box'>$day_num</div></div>";
+      $box_width_style = $this->calendar_width ? $this->calculate_box_width()."px;" : "";      
+      $html  = "<div class='$class' id='date_{$this->year}-{$this->month}-{$day_num}' style='float: left; width: {$box_width_style}'><div class='day_num_box'>$day_num</div></div>";
       return $html;
     }
     
     private function empty_block(){
-      $html = "<div class='empty_date date_box' style='float: left;'><div class='day_num_box'>&nbsp;</div></div>";
+      $box_width_style = $this->calendar_width ? $this->calculate_box_width()."px" : "";      
+      $html = "<div class='empty_date date_box' style='float: left; ; width: {$box_width_style}'><div class='day_num_box'>&nbsp;</div></div>";
       return $html;
+    }
+
+    private function calculate_box_width(){
+      return ($this->calendar_width/7) - 2;
     }
     
   
