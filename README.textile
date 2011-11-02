@@ -1,4 +1,4 @@
-=== Introduction ===
+h2. Introduction
 
 There are probably as many PHP calendar scripts as there are people to write PHP code,
 but I thought I'd throw my really easy to use one in to the mix for anyone who's interested.
@@ -8,7 +8,7 @@ When I was creating the script, I had the following goals in mind:
 * It needed to be really easy to visually customize
 * It needed to be really easy to hook in to client-side scripting.
 
-==== Easy to Use ====
+h2. Easy to Use
 
 Generating a calendar on a PHP page is as simple as adding the following PHP code:
 
@@ -20,7 +20,7 @@ Generating a calendar on a PHP page is as simple as adding the following PHP cod
 </code>
 
 
-=== Easy to Visually Customize ===
+h2. Easy to Visually Customize
 
 That's really all there is to it.  If you should happen to try this example, you might notice that
 your calendar leaves quite a bit to be desired visually though.  In order to get it looking functional,
@@ -39,7 +39,7 @@ file.  That file can also be dropped straight in to give you a reasonable defaul
 your calendar.
 
 
-=== Client-side Scripting ===
+h2. Client-side Scripting
 
 99% of the time, if you've got a calendar on a page, you need it to be interactive.  That interactivity is usually
 accomplished using some combination of server-side and browser-side scripting.  This calendar script is written 
@@ -47,12 +47,12 @@ entirely in PHP code, and it doesn't _require_ any Javascript, but it is "Javasc
 all of the vital parts of it are properly id'd and labelled for easy identification in a client-side script.
 
 
-=== Slightly More Advanced Usage ===
+h2. Slightly More Advanced Usage
 
 It's hard to call this 'Advanced' usage, since the whole thing is really super simple, but I thought I'd go 
 over a couple of alternative methods for creating your calendar.
 
-==== Passing Dates to render() ====
+h3. Passing Dates to render()
 
 Depending upon your application, it may not be practical to give a date to the calendar upon creation.  For 
 instance, if you're displaying more than one calendar on a page, you need not create a new calendar instance
@@ -64,7 +64,7 @@ for each one.  You can simply pass your desired date to the render method of the
   $calender->render(8, 2011);
 </code>
 
-==== Setting Calendar Width ====
+h3. Setting Calendar Width
 
 One thing that always gets on my nerves with calendar scripts is trying to determine the appropriate dimensions
 for each 'date box', depending upon the overall width of the calendar.  With my script, I try to take some of the
