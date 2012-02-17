@@ -12,12 +12,13 @@ h2. Easy to Use
 
 Generating a calendar on a PHP page is as simple as adding the following PHP code:
 
-<code>
-  include "calendar.php";\n
-  $calendar = new Calendar(7, 2011);\n
-\n
-  $calendar->render();\n
-</code>
+<pre>
+  <code>
+    include "calendar.php";
+    $calendar = new Calendar(7, 2011);
+    $calendar->render();\n
+  </code>
+</pre>
 
 
 h2. Easy to Visually Customize
@@ -26,12 +27,14 @@ That's really all there is to it.  If you should happen to try this example, you
 your calendar leaves quite a bit to be desired visually though.  In order to get it looking functional,
 we should style the 'day boxes' a little bit:
 
-<code>
-  .date_box{
-    height: 90px;
-    border: 1px solid black;
-  }
-</code>
+<pre>
+  <code>
+    .date_box{
+      height: 90px;
+      border: 1px solid black;
+    }
+  </code>
+</pre>
 
 All this does is establish a height for the boxes and gives them a border.  Now at least, it _looks_ like
 a calendar.  There are a lot of other style options, each of which are explained in the included calendar.css
@@ -58,11 +61,13 @@ Depending upon your application, it may not be practical to give a date to the c
 instance, if you're displaying more than one calendar on a page, you need not create a new calendar instance
 for each one.  You can simply pass your desired date to the render method of the calendar:
 
-<code>
-  $calender = new Calender();
-  $calender->render(7, 2011);
-  $calender->render(8, 2011);
-</code>
+<pre>
+  <code>
+    $calender = new Calender();
+    $calender->render(7, 2011);
+    $calender->render(8, 2011);
+  </code>
+</pre>
 
 h3. Setting Calendar Width
 
@@ -71,7 +76,9 @@ for each 'date box', depending upon the overall width of the calendar.  With my 
 pain out of that process.  Simply tell the script how wide, (in pixels), you want the calendar to be, and it will
 calculate all internal dimensions for you:
 
-<code>
-  $calender = new Calendar(null, null, 500);
-  $calendar->render(7, 2011);
-</code>
+<pre>
+  <code>
+    $calender = new Calendar(null, null, 500);
+    $calendar->render(7, 2011);
+  </code>
+</pre>
