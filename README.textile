@@ -13,10 +13,10 @@ h2. Easy to Use
 Generating a calendar on a PHP page is as simple as adding the following PHP code:
 
 <code>
-  include "calendar.php";
-  $calendar = new Calendar(7, 2011);
-
-  $calendar->render();
+  include "calendar.php";\n
+  $calendar = new Calendar(7, 2011);\n
+\n
+  $calendar->render();\n
 </code>
 
 
