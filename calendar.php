@@ -7,7 +7,7 @@
     public $year;
     public $calendar_width;
     
-    public function __construct($month = null, $year = null, $calendar_width = null){
+    public function __construct($month = null, $year = null, $calendar_width = 500){
       $this->month = $month;
       $this->year  = $year;
       $this->calendar_width = $calendar_width;
