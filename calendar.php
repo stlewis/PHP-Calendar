@@ -46,7 +46,7 @@ CAL;
     }
     
     public function calendar_for($month, $year){
-      $month = $month + 1;
+      // $month = $month + 1;
       $num_days   = cal_days_in_month(CAL_GREGORIAN, $month, $year);
       $first_day  = new DateTime("$year-$month-01"); 
       $fd_idx     = $first_day->format('N') == '7' ? 0 : $first_day->format('N');
@@ -72,19 +72,20 @@ CAL;
     }
     
     private function day_block($day_num){
-      $month     = $this->month + 1;
-      $class     = "date_box";
+      $month     = $this->month;
+      $class     = "real_date date_box";
       $now       = new DateTime(strftime("%Y-%m-%d"));
       $this_date = new DateTime("{$this->year}-{$month}-{$day_num}");
+      $id_date   = strftime("%Y-%m-%d", strtotime("{$this->year}-{$month}-{$day_num}"));
       if($this_date == $now) $class .= " current_day";
       $box_width_style = $this->calendar_width ? $this->calculate_box_width()."px;" : "";      
-      $html  = "<div class='$class' id='date_{$this->year}-{$this->month}-{$day_num}' style='float: left; width: {$box_width_style}'><div class='day_num_box'>$day_num</div></div>";
+      $html  = "<div class='$class' id='date_{$id_date}' style='float: left; width: {$box_width_style}; height: {$box_width_style};'><div class='day_num_box'>$day_num</div></div>";
       return $html;
     }
     
     private function empty_block(){
       $box_width_style = $this->calendar_width ? $this->calculate_box_width()."px" : "";      
-      $html = "<div class='empty_date date_box' style='float: left; ; width: {$box_width_style}'><div class='day_num_box'>&nbsp;</div></div>";
+      $html = "<div class='empty_date date_box' style='float: left; ; width: {$box_width_style}; height: {$box_width_style}'><div class='day_num_box'>&nbsp;</div></div>";
       return $html;
     }
 
